@@ -55,7 +55,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: 350,
       child: Column(
         children: [
 
@@ -101,13 +101,13 @@ class _Slide extends StatelessWidget {
           
           //* Imagen
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.30,
+            width: 150,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
                 movie.posterPath,
                 fit: BoxFit.cover,
-                //width: 150,
+                width: 150,
                 loadingBuilder: (context, child, loadingProgress) {
                   if ( loadingProgress != null ) {
                     return const Padding(
@@ -116,9 +116,10 @@ class _Slide extends StatelessWidget {
                     );
                   }
                   return GestureDetector(
-                    onTap: () => context.push('/movie/${ movie.id }'),
-                    child: FadeIn(child: child)
-                    );
+                    onTap: () => context.push('/home/0/movie/${ movie.id }'),
+                    child: FadeIn(child: child),
+                  );
+                  
                 },
               ),
             ),
@@ -128,7 +129,7 @@ class _Slide extends StatelessWidget {
 
           //* Title
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.30,
+            width: 150,
             child: Text(
               movie.title,
               maxLines: 2,
@@ -138,7 +139,7 @@ class _Slide extends StatelessWidget {
 
           //* Rating
           SizedBox(
-            width:  MediaQuery.of(context).size.width * 0.20,
+            width: 150,
             child: Row(
               children: [
                 Icon( Icons.star_half_outlined, color: Colors.yellow.shade800 ),
